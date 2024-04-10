@@ -30,6 +30,64 @@ fun main(args: Array<String>) {
     println(test2)
     printUpperCase("hello")
     printLength("hello")
+    val add = add(3, 5)
+    println(add)
+    printMessage("Hello")
+    fun multiply(a: Int, b: Int): Int = a * b
+
+// Usage
+    println(multiply(4, 2)) // Output: 8
+
+    fun greet(name: String, greeting: String = "Hello") {
+        println("$greeting, $name!")
+    }
+
+// Usage with default argument
+    greet("Alice") // Output: Hello, Alice!
+
+// Usage with named argument
+    greet(name = "Bob", greeting = "Welcome") // Output: Welcome, Bob!
+
+    fun <T> printVarargs(vararg items: T) {
+        for (item in items) {
+            println(item)
+        }
+    }
+
+// Usage
+    printVarargs(1, 2, 3, 4) // Pass integers
+    printVarargs("Hello", "World", "!") // Pass strings
+
+    fun <T> wrapPrint(vararg items: T) {
+        printVarargs(*items) // Using the spread operator to pass a vararg
+    }
+
+// Usage
+    wrapPrint("One", "Two", "Three")
+
+    fun <T> printWithPrefix(prefix: String, vararg items: T) {
+        for (item in items) {
+            println("$prefix $item")
+        }
+    }
+
+// Usage
+    printWithPrefix("Number:", 1, 2, 3)
+
+    val maybeNull: String? = null
+
+    try {
+        // Using the !! operator to assert that 'maybeNull' is not null.
+        val definitelyNotNull: String = maybeNull!!
+        println(definitelyNotNull)
+    } catch (e: NullPointerException) {
+        println("Caught NullPointerException: ${e.message}")
+    }
+
+    myTopLevelFunction()
+    MyClass.myStaticMethod()
+    val myClass = MyClass()
+    myClass.myMethod()
 }
 
 fun printUpperCase(str: String?) {
@@ -44,5 +102,12 @@ fun printLength(obj: Any) {
         // obj is automatically cast to String in this block
         println(obj.length) // No explicit cast needed
     }
+}
+
+fun add(a: Int, b: Int): Int {
+    return a + b
+}
+fun printMessage(message: String) {
+    println(message)
 }
 
