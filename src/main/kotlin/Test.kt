@@ -3,4 +3,8 @@ class Test {
     fun printA() {
         println(a)
     }
+
+}
+fun     test()  {
+    println("test")
 }
